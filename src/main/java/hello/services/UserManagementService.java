@@ -18,19 +18,19 @@ public class UserManagementService {
     private UserRepository userRepository;
 
     public List<User> getAllUsers() {
-        List<User> users = new ArrayList<User>();
+        List<User> users = new ArrayList<>();
         userRepository.findAll().forEach(users::add);
         return users;
     }
 
     public SignUpResult signUpUser(User user) {
-        boolean usernameAvaliable = Objects.
+        boolean usernameAvailable = Objects.
                 isNull(userRepository.findTopByUsername(user.getUsername()));
-        boolean emailAvaliable = Objects.
+        boolean emailAvailable = Objects.
                 isNull(userRepository.findTopByEmail(user.getEmail()));
 
-        if(!usernameAvaliable) return SignUpResult.USERNAME_IS_TAKEN;
-        if(!emailAvaliable) return SignUpResult.EMAIL_IS_TAKEN;
+        if(!usernameAvailable) return SignUpResult.USERNAME_IS_TAKEN;
+        if(!emailAvailable) return SignUpResult.EMAIL_IS_TAKEN;
 
         userRepository.save(user);
         return SignUpResult.SUCCESS;

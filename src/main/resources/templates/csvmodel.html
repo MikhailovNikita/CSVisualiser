@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
+<head></head>
+<body>
+<div class="span12">
+    <table id="myTableId" border="1" dt:table="true" >
+        <tbody>
+        <tr th:each="obj : ${objects}">
+            <td th:text="${name}" th:each="name : ${obj}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
