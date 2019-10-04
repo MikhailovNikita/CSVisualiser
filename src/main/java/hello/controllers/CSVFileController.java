@@ -35,6 +35,7 @@ public class CSVFileController {
                 String[] rows = completeFile.split("\n");
                 for (String row : rows) {
                     List<String> listRow = new ArrayList<>();
+                    row = row.replaceAll("\\\\\", "");
                     String[] statements = row.split(",");
                     listRow.addAll(Arrays.asList(statements));
                     preparedCSV.add(listRow);
